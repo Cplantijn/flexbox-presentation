@@ -21,36 +21,36 @@ class Presentation extends Component {
 
   _kbNavigation(e) {
     const { goNextSlide, goBackSlide, goNextArticle, goPrevArticle } = this.props;
-
-    switch(e.which) {
-      case 37: // Left Arrow Key
-        goBackSlide();
-        break;
-      case 39: // Right Arrow Key
-        goNextSlide();
-        break;
-      case 32: // Spacebar
-        goNextArticle();
-        break;
-      case 8:  // BackSpace
-        goPrevArticle();
-        break;
-      default:
-        return;
+    if (e.ctrlKey) {
+      switch(e.which) {
+        case 188: // Left Arrow Key
+          goBackSlide();
+          break;
+        case 190: // Right Arrow Key
+          goNextSlide();
+          break;
+        case 32: // Spacebar
+          goNextArticle();
+          break;
+        case 8:  // BackSpace
+          goPrevArticle();
+          break;
+        default:
+          return;
+      }
     }
   }
 
   render() {
-    const { goNext, goBack } = this.props;
-
     return (
       <div id="presentationRoot">
         <ReactCSSTransitionGroup
           className="slide-container"
+          name="slide-transtion-group"
           compontent="ul">
-          <SlideOne slideOrder={0} {...this.props}/>
-          <SlideTwo slideOrder={1}  {...this.props}/>
-          <SlideThree slideOrder={2} {...this.props}/>
+          <SlideOne slideOrder={0} bgColor="#C6DDF0" {...this.props}/>
+          <SlideTwo slideOrder={1}  bgColor="#E05263" {...this.props}/>
+          <SlideThree slideOrder={2} bgColor="#659157"{...this.props}/>
           <SlideFour slideOrder={3} {...this.props}/>
           <SlideFive slideOrder={4} {...this.props}/>
         </ReactCSSTransitionGroup>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CodeSlide from './CodeSlide';
 
 export default class SlideThree extends Component {
   render() {
@@ -13,9 +14,31 @@ export default class SlideThree extends Component {
       'prev': slideNumber === (slideOrder + 1)
     });
 
+    const initHtmlCode =
+`<div class="parent-container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+</div>`;
+    const initCssCode =
+`.parent-container {
+   width: 80%;
+   border: 3px solid red;
+}
+.item {
+  margin: 5px;
+  background: blue;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  font-weight: 600;
+}`
+
     return (
       <div style={style} className={slideCls}>
-        <h1>Slide Three</h1>
+        <CodeSlide bgColor={this.props.bgColor} htmlCode={initHtmlCode} cssCode={initCssCode}></CodeSlide>
       </div>
     );
   }
